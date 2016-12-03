@@ -17,11 +17,11 @@ class ParallaxCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         thumbImageView.layer.borderWidth = 1
-        thumbImageView.layer.borderColor = UIColor.white().cgColor
+        thumbImageView.layer.borderColor = UIColor.white.cgColor
         thumbImageView.layer.cornerRadius = 10
         thumbImageView.layer.masksToBounds = true
         contentGroupView.layer.borderWidth = 1
-        contentGroupView.layer.borderColor = UIColor.lightGray().cgColor
+        contentGroupView.layer.borderColor = UIColor.lightGray.cgColor
         contentGroupView.layer.cornerRadius = 10
         contentGroupView.layer.masksToBounds = true
     }
@@ -98,7 +98,7 @@ extension ViewController: UIScrollViewDelegate, UICollectionViewDelegate, UIColl
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let visibleCells = collectionView.visibleCells() as? [ParallaxCollectionViewCell] else { return }
+        guard let visibleCells = collectionView.visibleCells as? [ParallaxCollectionViewCell] else { return }
         for parallaxCell in visibleCells {
             let xOffset = ((collectionView.contentOffset.x - parallaxCell.frame.origin.x) / imageWidth) * offsetSpeed
             parallaxCell.imageView.frame = parallaxCell.imageView.bounds.offsetBy(dx: xOffset, dy: 0)
